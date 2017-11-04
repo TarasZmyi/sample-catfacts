@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2" //optional field, until Android Studio 3.0 (gradle plugin 3.0.0)
+
+    defaultConfig {
+        applicationId "tzpace.app.catfactssample"
+
+        minSdkVersion 21
+
+        //noinspection OldTargetApi | ignore newer verions.
+        targetSdkVersion 26
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.app.Instrumentation"
+
+    }
+
+    signingConfigs {
+        //TODO | configuring debug/release signing configs here.
+    }
+
+    buildTypes {
+
+        debug {
+            versionNameSuffix "-debug"
+
+            debuggable true
+
+            crunchPngs false
+            minifyEnabled false
+            shrinkResources false
+
+            useProguard true
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+            proguardFile 'proguard-rules.pro'
+        }
+
+        release {
+            debuggable false
+
+            crunchPngs true
+            minifyEnabled true
+            shrinkResources true
+
+            useProguard true
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFile 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        incremental true
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+    }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues true
+        }
+    }
+}
+
+dependencies {
+
+    //noinspection GradleDependency | ignore newer verions.
+    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
+
+    //noinspection GradleDependency | ignore newer verions.
+    implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
+
+    //networking
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}") {
+        exclude module: "okio"
+        exclude module: "okhttp"
+    }
+    implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
+
+    //unit tests
+    testImplementation 'junit:junit:4.12'
+
+}
