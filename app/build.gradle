@@ -21,35 +21,35 @@ android {
     }
 
     signingConfigs {
-        //TODO | configuring debug/release signing configs here.
+        release_sg {
+            keyAlias 'SampleAlias'
+            keyPassword 'SampleAliasPass'
+            storeFile file('sample_sign_key.jks')
+            storePassword 'SamplePass'
+        }
     }
 
     buildTypes {
-
         debug {
             versionNameSuffix "-debug"
-
             debuggable true
-
             crunchPngs false
             minifyEnabled false
             shrinkResources false
-
             useProguard true
             proguardFile getDefaultProguardFile('proguard-android.txt')
             proguardFile 'proguard-rules.pro'
         }
-
         release {
             debuggable false
-
             crunchPngs false
             minifyEnabled true
             shrinkResources true
-
             useProguard true
-            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFile 'Unrecognized value'
             proguardFile 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release_sg
         }
     }
 
@@ -71,13 +71,10 @@ android {
 }
 
 dependencies {
-
     //noinspection GradleDependency | ignore newer verions.
     implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
-
     //noinspection GradleDependency | ignore newer verions.
     implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
-
     //networking
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-simplexml:${retrofitVersion}"
@@ -87,13 +84,10 @@ dependencies {
     }
     implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
-
     //image
     implementation "com.github.bumptech.glide:glide:${glideVersion}"
     annotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
-
     //unit tests
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.12.0'
-
 }
