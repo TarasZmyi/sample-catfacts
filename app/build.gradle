@@ -46,7 +46,7 @@ android {
             minifyEnabled true
             shrinkResources true
             useProguard true
-            proguardFile 'Unrecognized value'
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
             proguardFile 'proguard-rules.pro'
 
             signingConfig signingConfigs.release_sg
@@ -77,7 +77,9 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
     //networking
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
-    implementation "com.squareup.retrofit2:converter-simplexml:${retrofitVersion}"
+    implementation ("com.squareup.retrofit2:converter-simplexml:${retrofitVersion}"){
+        exclude group:'xpp3', module:'xpp3' //android conflicts workaround;
+    }
     implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}") {
         exclude module: "okio"
         exclude module: "okhttp"
