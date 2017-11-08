@@ -4,7 +4,7 @@ Android sample project to show <a href="https://catfact.ninja">Cat Facts API</a>
 # Screenshots
 <img src="extra/Screenshot_1510143335.png" alt="Main" width="288" height="512">&nbsp;
 <img src="extra/Screenshot_1510143385.png" alt="Loader" width="288" height="512">&nbsp;
-<img src="extra/Screenshot_1510143395.png" alt="Share" width="288" height="512">
+<img src="extra/Screenshot_1510143396.png" alt="Share" width="288" height="512">
 
 # Developer
 
