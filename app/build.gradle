@@ -77,8 +77,8 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
     //networking
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
-    implementation ("com.squareup.retrofit2:converter-simplexml:${retrofitVersion}"){
-        exclude group:'xpp3', module:'xpp3' //android conflicts workaround;
+    implementation("com.squareup.retrofit2:converter-simplexml:${retrofitVersion}") {
+        exclude group: 'xpp3', module: 'xpp3' //android conflicts workaround;
     }
     implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}") {
         exclude module: "okio"
