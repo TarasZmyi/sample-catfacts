@@ -1,15 +1,15 @@
 package tzpace.app.catfactssample.presentation;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import tzpace.app.catfactssample.ObjectGraph;
 import tzpace.app.catfactssample.utils.log.ILogger;
 import tzpace.app.catfactssample.utils.log.LogManager;
 
-public abstract class BaseActivity extends AppCompatActivity implements ObjectGraph.Provider {
+public abstract class BaseActivity extends Activity implements ObjectGraph.Provider {
 
     protected final String TAG;
     protected final ILogger logger;

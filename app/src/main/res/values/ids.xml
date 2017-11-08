@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="id_root_view_group_activity_main" type="id"/>
+    <item name="id_root_view_group_activity_main" type="id" />
+
+    <item name="id_recycler_view_activity_main" type="id" />
+    <item name="id_swipe_to_refresh_activity_main" type="id" />
+    <item name="id_ll_seek_container_activity_main" type="id" />
+    <item name="id_seek_bar_activity_main" type="id" />
+    <item name="id_tv_current_limit_activity_main" type="id" />
+
+    <item name="id_tv_fact_txt_item_cat_fact" type="id" />
+    <item name="id_im_ava_item_cat_fact" type="id" />
+    <item name="id_im_share_item_cat_fact" type="id" />
 
 </resources>

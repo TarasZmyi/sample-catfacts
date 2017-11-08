@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/id_root_view_group_activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    android:orientation="vertical"
     tools:context=".presentation.main.MainActivity">
 
-</FrameLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@id/id_swipe_to_refresh_activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/id_ll_seek_container_activity_main">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/id_recycler_view_activity_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <FrameLayout
+        android:id="@id/id_ll_seek_container_activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_rect_line_item_cat_fact"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/id_tv_current_limit_activity_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:textSize="12sp"
+            tools:text="Max length limit" />
+
+        <SeekBar
+            android:id="@id/id_seek_bar_activity_main"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            tools:max="500"
+            tools:progress="100" />
+
+    </FrameLayout>
+
+</RelativeLayout>

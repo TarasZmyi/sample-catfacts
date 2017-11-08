@@ -2,6 +2,13 @@ package tzpace.app.catfactssample;
 
 import android.content.Context;
 
+import tzpace.app.catfactssample.communication.CommunicationModuleImpl;
+import tzpace.app.catfactssample.communication.ICommunicationModule;
+import tzpace.app.catfactssample.communication.service.ApiHelper;
+import tzpace.app.catfactssample.domain.catdata.CatDataModuleImpl;
+import tzpace.app.catfactssample.domain.catdata.ICatDataModule;
+import tzpace.app.catfactssample.domain.runtime.IRuntimeModule;
+import tzpace.app.catfactssample.domain.runtime.RuntimeModuleImpl;
 import tzpace.app.catfactssample.utils.log.ILogger;
 import tzpace.app.catfactssample.utils.log.LogManager;
 
@@ -19,11 +26,25 @@ public class ObjectGraph {
         logger = LogManager.getLogger();
     }
 
+    private ICatDataModule catDataModule;
+
+    private IRuntimeModule runtimeModule;
+
     final void init(final Context _appContext) {
         logger.debug(TAG, "init | appContext = " + _appContext);
 
-        // TODO | init modules here.
+        runtimeModule = new RuntimeModuleImpl(_appContext);
 
+        final ICommunicationModule communicationModule = new CommunicationModuleImpl(new ApiHelper());
+        catDataModule = new CatDataModuleImpl(communicationModule.getCatFactService(), communicationModule.getCatImgService());
+    }
+
+    public ICatDataModule getCatDataModule() {
+        return catDataModule;
+    }
+
+    public IRuntimeModule getRuntimeModule() {
+        return runtimeModule;
     }
 
     public static ObjectGraph getInstance() {
