@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion 26
-    buildToolsVersion "26.0.3" //optional field, until Android Studio 3.0 (gradle plugin 3.0.0)
+    buildToolsVersion "27.0.1" //optional field, until Android Studio 3.0 (gradle plugin 3.0.0)
 
     defaultConfig {
         applicationId "tzpace.app.catfactssample"
