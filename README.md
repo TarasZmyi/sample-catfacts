@@ -1,4 +1,4 @@
-## CatFactsSample
+## CatFacts Sample App
 Android sample project to show <a href="https://catfact.ninja">Cat Facts API</a> and <a href="http://thecatapi.com">The Cat API</a> functionality.
 
 # Screenshots
