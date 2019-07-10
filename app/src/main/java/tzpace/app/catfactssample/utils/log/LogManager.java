@@ -1,6 +1,6 @@
 package tzpace.app.catfactssample.utils.log;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import tzpace.app.catfactssample.BuildConfig;
 

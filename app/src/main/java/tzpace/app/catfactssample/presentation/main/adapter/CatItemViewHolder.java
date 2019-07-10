@@ -1,8 +1,10 @@
 package tzpace.app.catfactssample.presentation.main.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.SpannableString;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,6 +33,11 @@ class CatItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     private ImageView imAva;
     private ImageView imShare;
 
+    @Nullable
+    private ICatItemClickListener catItemClickListener;
+    @Nullable
+    private CatFact catFact;
+
     CatItemViewHolder(View itemView, final IRuntimeModule _runtimeModule) {
         super(itemView);
 
@@ -42,12 +49,6 @@ class CatItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         imAva = itemView.findViewById(R.id.id_im_ava_item_cat_fact);
         imShare = itemView.findViewById(R.id.id_im_share_item_cat_fact);
     }
-
-    @Nullable
-    private ICatItemClickListener catItemClickListener;
-
-    @Nullable
-    private CatFact catFact;
 
     final void bindData(final @NonNull CatItemDataHolder _catItemDataHolder) {
         logger.debug(TAG, "bindData");

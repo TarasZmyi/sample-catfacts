@@ -2,13 +2,15 @@ package tzpace.app.catfactssample.presentation.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.List;
 import java.util.Locale;
@@ -29,13 +31,55 @@ public final class MainActivity extends BaseActivity implements IMainView, ICatI
 
     private SeekBar sbLengthLimiter;
     private TextView tvCurrentLimit;
+    private final SeekBar.OnSeekBarChangeListener sbChangeListener = new SeekBar.OnSeekBarChangeListener() {
 
+        @Override
+        public final void onProgressChanged(final SeekBar seekBar, final int _progress, final boolean _fromUser) {
+            mainModel.setTxtFactLengthLimit(_progress);
+            setLengthLimitText(_progress);
+        }
+
+        @Override
+        public final void onStartTrackingTouch(final SeekBar seekBar) {
+            // catItemAdapter.clearData();
+        }
+
+        @Override
+        public final void onStopTrackingTouch(final SeekBar seekBar) {
+            getProgressManager().showLoading();
+            mainModel.loadCatItemData();
+        }
+    };
     private RecyclerView rvCatFacts;
     private SwipeRefreshLayout swipeToRefresh;
-
     private CatItemAdapter catItemAdapter;
-
     private boolean allowLoadMoreOnScroll;
+    private final RecyclerView.OnScrollListener scrollListener = new RecyclerView.OnScrollListener() {
+
+        @Override
+        public final void onScrolled(@NonNull final RecyclerView _recyclerView, final int _dx, final int _dy) {
+            if (_dy > 0) {
+                final LinearLayoutManager layoutManager = (LinearLayoutManager) _recyclerView.getLayoutManager();
+                if (layoutManager == null) {
+                    return;
+                }
+                final int visibleItemCount = layoutManager.getChildCount();
+                final int totalItemCount = layoutManager.getItemCount();
+                final int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
+
+                if (allowLoadMoreOnScroll) {
+                    if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
+                        allowLoadMoreOnScroll = false;
+                        // try load new page;
+                        getProgressManager().showLoading("Loading more...");
+                        mainModel.loadMoreCatItemData();
+
+                    }
+                }
+            }
+        }
+
+    };
 
     @Override
     protected final int layoutResId() {
@@ -163,50 +207,6 @@ public final class MainActivity extends BaseActivity implements IMainView, ICatI
         swipeToRefresh.setOnRefreshListener(this);
         swipeToRefresh.setColorSchemeResources(R.color.grey);
     }
-
-    private final RecyclerView.OnScrollListener scrollListener = new RecyclerView.OnScrollListener() {
-
-        @Override
-        public final void onScrolled(final RecyclerView _recyclerView, final int _dx, final int _dy) {
-            if (_dy > 0) {
-                final LinearLayoutManager layoutManager = (LinearLayoutManager) _recyclerView.getLayoutManager();
-                final int visibleItemCount = layoutManager.getChildCount();
-                final int totalItemCount = layoutManager.getItemCount();
-                final int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
-
-                if (allowLoadMoreOnScroll) {
-                    if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
-                        allowLoadMoreOnScroll = false;
-                        // try load new page;
-                        getProgressManager().showLoading("Loading more...");
-                        mainModel.loadMoreCatItemData();
-
-                    }
-                }
-            }
-        }
-
-    };
-
-    private final SeekBar.OnSeekBarChangeListener sbChangeListener = new SeekBar.OnSeekBarChangeListener() {
-
-        @Override
-        public final void onProgressChanged(final SeekBar seekBar, final int _progress, final boolean _fromUser) {
-            mainModel.setTxtFactLengthLimit(_progress);
-            setLengthLimitText(_progress);
-        }
-
-        @Override
-        public final void onStartTrackingTouch(final SeekBar seekBar) {
-            // catItemAdapter.clearData();
-        }
-
-        @Override
-        public final void onStopTrackingTouch(final SeekBar seekBar) {
-            getProgressManager().showLoading();
-            mainModel.loadCatItemData();
-        }
-    };
 
     private void setLengthLimitText(final int _progress) {
         tvCurrentLimit.setText(String.format(Locale.getDefault(), "Text Length limit: %d", _progress));

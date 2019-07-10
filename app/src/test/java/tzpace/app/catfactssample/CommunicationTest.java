@@ -35,7 +35,7 @@ public final class CommunicationTest {
     }
 
     @Test
-    public final void IsServicesCreated() throws IOException {
+    public final void IsServicesCreated() {
         final CommunicationModuleImpl communicationModule = new CommunicationModuleImpl(apiHelper);
         Assert.assertNotNull(communicationModule.getCatFactService());
         Assert.assertNotNull(communicationModule.getCatImgService());

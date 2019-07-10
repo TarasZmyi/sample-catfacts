@@ -1,7 +1,8 @@
 package tzpace.app.catfactssample.utils.log;
 
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 final class LoggerDebugImpl implements ILogger {
 

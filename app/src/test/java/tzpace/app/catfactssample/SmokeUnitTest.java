@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class SmokeUnitTest {
 
     @Test
-    public void runSmokeTest() throws Exception {
+    public void runSmokeTest() {
         assertTrue(true);
     }
 

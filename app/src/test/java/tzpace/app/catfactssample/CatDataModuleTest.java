@@ -11,8 +11,6 @@ import org.mockito.stubbing.Answer;
 
 import static org.mockito.Mockito.*;
 
-import java.io.IOException;
-
 import tzpace.app.catfactssample.communication.ICommunicationModule;
 import tzpace.app.catfactssample.communication.dto.json.catfact.CatFactDto;
 import tzpace.app.catfactssample.domain.catdata.CatDataModuleImpl;
@@ -35,13 +33,13 @@ public final class CatDataModuleTest {
     }
 
     @Test
-    public final void LoadRandomCatFact_Success() throws IOException {
+    public final void LoadRandomCatFact_Success() {
         doAnswer(new Answer<Object>() {
             @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
+            public Object answer(InvocationOnMock invocation) {
                 ICommunicationModule.ServiceCallback<CatFactDto> serviceCallback = invocation.getArgument(0);
                 final CatFactDto catFactDto = new CatFactDto();
-                final String txt = "abcdfabcdf" + String.valueOf(System.currentTimeMillis());
+                final String txt = "abcdfabcdf" + System.currentTimeMillis();
                 catFactDto.setFact(txt);
                 catFactDto.setLength(txt.length());
                 serviceCallback.onSuccess(catFactDto);
@@ -59,13 +57,13 @@ public final class CatDataModuleTest {
     }
 
     @Test
-    public final void LoadRandomCatFact_Error() throws IOException {
+    public final void LoadRandomCatFact_Error() {
         doAnswer(new Answer<Object>() {
             @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
+            public Object answer(InvocationOnMock invocation) {
                 ICommunicationModule.ServiceCallback<CatFactDto> serviceCallback = invocation.getArgument(0);
 
-                final String txt = "error" + String.valueOf(System.currentTimeMillis());
+                final String txt = "error" + System.currentTimeMillis();
                 serviceCallback.onError(txt);
                 return null;
             }
