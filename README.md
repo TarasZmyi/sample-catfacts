@@ -8,4 +8,4 @@ Android sample project to show <a href="https://catfact.ninja">Cat Facts API</a>
 
 # Developer
 
-* [Taras Zmyi](https://github.com/tZpace)
+* [Taras Zmyi](https://github.com/TarasZmyi)
