@@ -7,7 +7,7 @@ import java.util.List;
 import tzpace.app.catfactssample.communication.ICommunicationModule;
 import tzpace.app.catfactssample.communication.dto.json.catfact.CatFactDto;
 import tzpace.app.catfactssample.communication.dto.json.pagedcatfacts.PagedCatFactsDto;
-import tzpace.app.catfactssample.communication.dto.xml.catimg.CatImgDto;
+import tzpace.app.catfactssample.communication.dto.json.catimg.CatImgDto;
 import tzpace.app.catfactssample.domain.model.CatFact;
 import tzpace.app.catfactssample.domain.model.CatImg;
 import tzpace.app.catfactssample.domain.model.PagesHelper;
@@ -149,9 +149,9 @@ public final class CatDataModuleImpl implements ICatDataModule {
         }
     };
 
-    private final ICommunicationModule.ServiceCallback<CatImgDto> loadCatImagesDataServiceCallback = new ICommunicationModule.ServiceCallback<CatImgDto>() {
+    private final ICommunicationModule.ServiceCallback<List<CatImgDto>> loadCatImagesDataServiceCallback = new ICommunicationModule.ServiceCallback<List<CatImgDto>>() {
         @Override
-        public void onSuccess(CatImgDto _response) {
+        public void onSuccess(List<CatImgDto> _response) {
             logger.debug(TAG, "loadCatImagesDataServiceCallback | onSuccess");
 
             catImagesData = entityTranslator.createCatImagesData(_response);

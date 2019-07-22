@@ -1,12 +1,13 @@
 package tzpace.app.catfactssample.communication.service.catimg;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
 import tzpace.app.catfactssample.communication.ApiConst;
 import tzpace.app.catfactssample.communication.ICommunicationModule;
-import tzpace.app.catfactssample.communication.dto.xml.catimg.CatImgDto;
+import tzpace.app.catfactssample.communication.dto.json.catimg.CatImgDto;
 import tzpace.app.catfactssample.communication.service.ApiCallback;
 import tzpace.app.catfactssample.utils.log.ILogger;
 import tzpace.app.catfactssample.utils.log.LogManager;
@@ -23,15 +24,14 @@ public class CatImgServiceImpl implements ICommunicationModule.CatImgService {
     }
 
     @Override
-    public void getListOfCatImages(ICommunicationModule.ServiceCallback<CatImgDto> _callback) {
+    public void getListOfCatImages(ICommunicationModule.ServiceCallback<List<CatImgDto>> _callback) {
         logger.debug(TAG, "getListOfCatImages");
         final Map<String, String> query = new HashMap<>();
-        query.put("format", "xml");
-        query.put("results_per_page", String.valueOf(ApiConst.PAGE_SIZE));
-        query.put("type", "jpg,png");
-        //query.put("size", "small"); // not good
-        final Call<CatImgDto> call = catImgApi.getListOfCatImages(query);
-        final ApiCallback<CatImgDto> apiCallback = new ApiCallback<>(_callback);
+        query.put("limit", String.valueOf(ApiConst.PAGE_SIZE)); // (min 1, max 100)
+        query.put("mime_types", "jpg,png");
+        query.put("size", "thumb"); // (allow: full, med, small, thumb)
+        final Call<List<CatImgDto>> call = catImgApi.getListOfCatImages(query);
+        final ApiCallback<List<CatImgDto>> apiCallback = new ApiCallback<>(_callback);
         call.enqueue(apiCallback);
     }
 

@@ -5,7 +5,7 @@ import retrofit2.Response;
 import tzpace.app.catfactssample.communication.ICommunicationModule;
 import tzpace.app.catfactssample.communication.dto.BaseDto;
 
-public final class ApiCallback<T extends BaseDto> implements retrofit2.Callback<T> {
+public final class ApiCallback<T/* extends BaseDto*/> implements retrofit2.Callback<T> {
 
     private final ICommunicationModule.ServiceCallback<T> serviceCallback;
 

@@ -5,8 +5,7 @@ import java.util.List;
 
 import tzpace.app.catfactssample.communication.dto.json.catfact.CatFactDto;
 import tzpace.app.catfactssample.communication.dto.json.pagedcatfacts.PagedCatFactsDto;
-import tzpace.app.catfactssample.communication.dto.xml.catimg.CatImgDto;
-import tzpace.app.catfactssample.communication.dto.xml.help.Image;
+import tzpace.app.catfactssample.communication.dto.json.catimg.CatImgDto;
 import tzpace.app.catfactssample.communication.service.catfact.IEntityTranslator;
 import tzpace.app.catfactssample.domain.model.CatFact;
 import tzpace.app.catfactssample.domain.model.CatImg;
@@ -42,10 +41,10 @@ final class EntityTranslator implements IEntityTranslator {
     }
 
     @Override
-    public List<CatImg> createCatImagesData(CatImgDto _dto) {
+    public List<CatImg> createCatImagesData(List<CatImgDto> _dto) {
         final List<CatImg> data = new ArrayList<>();
-        for (final Image image : _dto.getImages()) {
-            data.add(new CatImg(image.getUrl()));
+        for (final CatImgDto catImgDto : _dto) {
+            data.add(new CatImg(catImgDto.getUrl()));
         }
         return data;
     }

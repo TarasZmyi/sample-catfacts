@@ -8,7 +8,7 @@ public final class ApiConst {
 
     static final String BASE_URL_CAT_FACT = "https://catfact.ninja";
 
-    static final String BASE_URL_CAT_IMG = "https://thecatapi.com";
+    static final String BASE_URL_CAT_IMG = "https://api.thecatapi.com";
 
     private ApiConst() {
     }
@@ -18,7 +18,7 @@ public final class ApiConst {
         public static final String GET_FACTS = "/facts";
         public static final String GET_FACT = "/factTxt";
 
-        public static final String GET_IMAGES = "/api/images/get";
+        public static final String GET_IMAGES = "/v1/images/search";
 
         private Path() {
         }

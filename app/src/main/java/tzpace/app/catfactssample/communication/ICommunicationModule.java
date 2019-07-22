@@ -1,9 +1,11 @@
 package tzpace.app.catfactssample.communication;
 
-import tzpace.app.catfactssample.communication.dto.BaseDto;
+import java.util.List;
+
+// import tzpace.app.catfactssample.communication.dto.BaseDto;
 import tzpace.app.catfactssample.communication.dto.json.catfact.CatFactDto;
 import tzpace.app.catfactssample.communication.dto.json.pagedcatfacts.PagedCatFactsDto;
-import tzpace.app.catfactssample.communication.dto.xml.catimg.CatImgDto;
+import tzpace.app.catfactssample.communication.dto.json.catimg.CatImgDto;
 
 public interface ICommunicationModule {
 
@@ -25,11 +27,11 @@ public interface ICommunicationModule {
 
     interface CatImgService {
 
-        void getListOfCatImages(ServiceCallback<CatImgDto> _callback);
+        void getListOfCatImages(ServiceCallback<List<CatImgDto>> _callback);
 
     }
 
-    interface ServiceCallback<T extends BaseDto> {
+    interface ServiceCallback<T/* extends BaseDto*/> {
 
         void onSuccess(T _response);
 

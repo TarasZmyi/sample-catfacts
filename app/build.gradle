@@ -61,30 +61,34 @@ android {
 
 dependencies {
 
+    //region androidx
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    //endregion
 
-    //networking
-    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
-    implementation("com.squareup.retrofit2:converter-simplexml:${retrofitVersion}") {
-        exclude group: 'xpp3', module: 'xpp3' //android conflicts workaround;
-    }
+    //region networking
+    implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
     implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}") {
         exclude module: "okio"
         exclude module: "okhttp"
     }
-    implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
-    //image
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    //endregion
+
+    //region image
     implementation "com.github.bumptech.glide:glide:${glideVersion}"
     annotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
-    //unit tests
+    //endregion
+
+    //region unit tests
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.12.0'
+    //endregion
 
-//    testImplementation 'junit:junit:4.12'
-//    androidTestImplementation 'androidx.test:core:1.2.0'
-//    androidTestImplementation 'androidx.test:runner:1.2.0'
-//    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // testImplementation 'junit:junit:4.12'
+    // androidTestImplementation 'androidx.test:core:1.2.0'
+    // androidTestImplementation 'androidx.test:runner:1.2.0'
+    // androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    // androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
