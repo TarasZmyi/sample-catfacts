@@ -1,6 +1,4 @@
 <resources>
-
-    <string name="app_name" translatable="false">Cat Facts Sample</string>
-    <string name="share_cat_fact">Share Cat Fact</string>
-
+    <string name="txt_app_name" translatable="false">Cat Facts</string>
+    <string name="txt_share_cat_fact">Share Cat Fact</string>
 </resources>
