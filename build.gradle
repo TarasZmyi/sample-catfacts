@@ -1,4 +1,4 @@
-// Top-level build file
+// Top-level build gradle file.
 
 buildscript {
     repositories {
@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 
@@ -18,9 +18,8 @@ allprojects {
 }
 
 ext {
-    glideVersion = "4.3.0"
-    okhttpVersion = "3.14.2"
-    retrofitVersion = "2.6.0"
+    okhttpVersion = "3.14.4"
+    retrofitVersion = '2.7.0'
 }
 
 task clean(type: Delete) {

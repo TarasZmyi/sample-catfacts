@@ -2,23 +2,24 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 28
+    compileSdkVersion 29
+    buildToolsVersion = '29.0.2'
 
     defaultConfig {
-        applicationId "tzpace.app.catfactssample"
+        applicationId 'tz.app.sample.catfacts'
 
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion 23
+        targetSdkVersion 29
 
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
 
         testInstrumentationRunner "android.app.Instrumentation"
         // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
-        release_sg {
+        releaseSigning {
             keyAlias 'SampleAlias'
             keyPassword 'SampleAliasPass'
             storeFile file('sample_sign_key.jks')
@@ -38,7 +39,7 @@ android {
             debuggable false
             crunchPngs false
             minifyEnabled true
-            signingConfig signingConfigs.release_sg
+            signingConfig signingConfigs.releaseSigning
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -61,34 +62,30 @@ android {
 
 dependencies {
 
-    //region androidx
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    //region AndroidX
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     //endregion
 
-    //region networking
+    //region Networking
     implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
-    implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}") {
-        exclude module: "okio"
-        exclude module: "okhttp"
-    }
+
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
     //endregion
 
-    //region image
-    implementation "com.github.bumptech.glide:glide:${glideVersion}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
-    //endregion
-
-    //region unit tests
+    //region Unit Testing
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.12.0'
+    testImplementation 'org.mockito:mockito-core:3.2.4'
     //endregion
 
-    // testImplementation 'junit:junit:4.12'
+    //region Instrumentation Testing
     // androidTestImplementation 'androidx.test:core:1.2.0'
     // androidTestImplementation 'androidx.test:runner:1.2.0'
     // androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     // androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //endregion
+
 }
