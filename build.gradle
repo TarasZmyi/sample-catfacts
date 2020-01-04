@@ -19,7 +19,7 @@ allprojects {
 
 ext {
     okhttpVersion = "3.14.4"
-    retrofitVersion = '2.7.0'
+    retrofitVersion = '2.7.1'
 }
 
 task clean(type: Delete) {
