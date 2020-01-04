@@ -23,22 +23,25 @@ local.properties
 # Log Files
 *.log
 
-# Android Studio captures folder
+# Android Studio
 captures/
 
 # Intellij
 *.iml
-.idea/workspace.xml
+.idea/caches
+.idea/libraries
 .idea/tasks.xml
 .idea/gradle.xml
-.idea/dictionaries
-.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/assetWizardSettings.xml
 
 # Keystore files
 # *.jks
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
+.cxx
 
 # Apple filesystem
 .DS_Store
