@@ -2,6 +2,7 @@
   <dictionary name="taras">
     <words>
       <w>catfacts</w>
+      <w>gitattributes</w>
       <w>gitignore</w>
     </words>
   </dictionary>
