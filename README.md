@@ -1,6 +1,5 @@
 ## CatFacts Sample App
-Android project represents developer showcase of code style,
-powered by open source APIs: <a href="https://catfact.ninja">Cat Facts API</a> and <a href="http://thecatapi.com">TheCatAPI</a>.
+Android project representing developer's code style showcase, powered by open source APIs: <a href="https://catfact.ninja">Cat Facts API</a> and <a href="http://thecatapi.com">TheCatAPI</a>.
 
 # Screenshots
 <img src="extra/Screenshot_1510143335.png" alt="Main" width="288" height="512">&nbsp;
