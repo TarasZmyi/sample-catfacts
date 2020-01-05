@@ -2,7 +2,6 @@ package tz.app.sample.catfacts.communication.service;
 
 import retrofit2.Call;
 import retrofit2.Response;
-
 import tz.app.sample.catfacts.communication.ICommunicationModule;
 
 public final class ApiCallback<T> implements retrofit2.Callback<T> {

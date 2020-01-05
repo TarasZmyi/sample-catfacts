@@ -12,6 +12,9 @@ import tz.app.sample.catfacts.domain.runtime.RuntimeModuleImpl;
 import tz.app.sample.catfacts.utils.log.ILogger;
 import tz.app.sample.catfacts.utils.log.LogManager;
 
+import static tz.app.sample.catfacts.communication.ICommunicationModule.CatFactService;
+import static tz.app.sample.catfacts.communication.ICommunicationModule.CatImgService;
+
 public class ObjectGraph {
 
     private final String TAG;
@@ -28,15 +31,20 @@ public class ObjectGraph {
         logger = LogManager.getLogger();
     }
 
-    static void init(final Context _appContext) {
+    static void init(final Context appContext) {
         final ObjectGraph objectGraph = getInstance();
 
-        objectGraph.logger.debug(objectGraph.TAG, "init, appContext = " + _appContext);
+        objectGraph.logger.debug(objectGraph.TAG, "init, appContext = " + appContext);
 
-        objectGraph.runtimeModule = new RuntimeModuleImpl(_appContext);
+        objectGraph.runtimeModule = new RuntimeModuleImpl(appContext);
 
-        final ICommunicationModule communicationModule = new CommunicationModuleImpl(new ApiHelper());
-        objectGraph.dataModule = new DataModuleImpl(communicationModule.getCatFactService(), communicationModule.getCatImgService());
+        final ApiHelper apiHelper = new ApiHelper();
+        final ICommunicationModule communicationModule = new CommunicationModuleImpl(apiHelper);
+
+        final CatImgService catImgService = communicationModule.getCatImgService();
+        final CatFactService catFactService = communicationModule.getCatFactService();
+
+        objectGraph.dataModule = new DataModuleImpl(catFactService, catImgService);
     }
 
     public static ObjectGraph getInstance() {

@@ -1,7 +1,5 @@
 package tz.app.sample.catfacts.presentation.main;
 
-import android.content.Intent;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
