@@ -1,6 +1,7 @@
 package tz.app.sample.catfacts;
 
 import android.app.Application;
+import android.content.Context;
 
 import tz.app.sample.catfacts.utils.img.ImageLoader;
 import tz.app.sample.catfacts.utils.log.ILogger;
@@ -8,7 +9,7 @@ import tz.app.sample.catfacts.utils.log.LogManager;
 
 /**
  * Extended Application class;
- *
+ * <p>
  * Maintains global app state through ObjectGraph instance.
  */
 public final class App extends Application {
@@ -26,8 +27,9 @@ public final class App extends Application {
     public final void onCreate() {
         super.onCreate();
         logger.debug(TAG, "onCreate");
-        ImageLoader.init();
-        ObjectGraph.init(getApplicationContext());
+        final Context appContext = getApplicationContext();
+        ImageLoader.init(appContext);
+        ObjectGraph.init(appContext);
     }
 
 }
