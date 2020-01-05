@@ -17,6 +17,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="grey">#FF808080</color>
+
+    <!--40%-->
+    <color name="black40">#66000000</color>
+
     <color name="transparent">#00000000</color>
 
     <!--background color for adaptive launcher icon-->

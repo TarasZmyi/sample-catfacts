@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:background="@drawable/bg_rect_line_item_cat_fact">
+    android:layout_height="@dimen/dimen_list_item_height">
+
+    <ImageView
+        android:id="@+id/id_im_ava_item_cat_fact"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:ignore="contentDescription"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@id/id_tv_fact_txt_item_cat_fact"
+        android:id="@+id/id_tv_fact_txt_item_cat_fact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_margin="8dp"
-        android:layout_toStartOf="@id/id_im_share_item_cat_fact"
+        android:layout_gravity="bottom"
+        android:background="@color/black40"
+        android:breakStrategy="simple"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hyphenationFrequency="none"
+        android:padding="@dimen/dimen_8dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="normal"
         android:typeface="monospace"
-        tools:paddingStart="@dimen/margin_flow_text_item_cat_fact"
-        tools:text="cat facts text" />
+        tools:text="Cat fact text here." />
 
-    <ImageView
-        android:id="@id/id_im_ava_item_cat_fact"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="8dp"
-        android:scaleType="fitXY"
-        tools:background="@drawable/bg_rect_line_item_cat_fact"
-        tools:ignore="contentDescription" />
-
-    <ImageView
-        android:id="@id/id_im_share_item_cat_fact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="8dp"
+    <ImageButton
+        android:id="@+id/id_im_share_item_cat_fact"
+        android:layout_width="@dimen/dimen_share_btn_size"
+        android:layout_height="@dimen/dimen_share_btn_size"
+        android:layout_gravity="end|top"
+        android:layout_margin="@dimen/dimen_2dp"
+        android:background="@drawable/bg_ripple_round_black"
+        android:paddingStart="@dimen/dimen_0dp"
+        android:paddingEnd="@dimen/dimen_4dp"
+        android:scaleType="center"
         android:src="@drawable/ic_share_black"
         tools:ignore="contentDescription" />
 
-</RelativeLayout>
+</FrameLayout>
