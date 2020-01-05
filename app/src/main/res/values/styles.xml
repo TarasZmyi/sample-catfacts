@@ -2,14 +2,17 @@
 
     <style name="AppTheme" parent="android:Theme.Material">
 
+        <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
 
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textColorHint">@color/colorTextHint</item>
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+
+        <item name="android:navigationIcon">@drawable/ic_navigation_pets</item>
+        <item name="android:listDivider">@drawable/shape_list_divider</item>
 
     </style>
 
