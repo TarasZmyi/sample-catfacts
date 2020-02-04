@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion 29
-    buildToolsVersion = '29.0.2'
+    buildToolsVersion = '29.0.3'
 
     defaultConfig {
         applicationId 'tz.app.sample.catfacts'
@@ -63,15 +63,19 @@ android {
 dependencies {
 
     //region AndroidX
+    implementation 'androidx.activity:activity:1.1.0'
+    implementation 'androidx.fragment:fragment:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     //endregion
 
     //region Networking
+    //noinspection GradleDependency
+    implementation "com.squareup.okio:okio:1.17.5"
+    implementation "com.google.code.gson:gson:2.8.6"
     implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
-
     implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
     //endregion
