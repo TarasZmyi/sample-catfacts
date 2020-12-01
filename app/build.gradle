@@ -44,8 +44,9 @@ android {
         }
     }
 
-    viewBinding {
-        enabled = false
+    buildFeatures {
+        dataBinding = false
+        viewBinding = false
     }
 
     lintOptions {
